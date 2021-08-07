@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router';
 import App from './App.vue'
 import Nothing from './components/Nothing.vue';
+import { createMicroFrontendHost } from '@microf/vue-host';
 
 const router = createRouter({
   routes: [
@@ -13,4 +14,5 @@ const router = createRouter({
 const app = createApp(App);
 
 app.use(router);
+app.use(createMicroFrontendHost({router, apps: []}))
 app.mount('#app')
