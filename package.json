@@ -1,0 +1,24 @@
+{
+  "name": "@microfrontends/momorepo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "lerna bootstrap",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/greenpress/microfrontends.git"
+  },
+  "keywords": [],
+  "author": "David Meir-Levy <davidmeirlevy@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/greenpress/microfrontends/issues"
+  },
+  "homepage": "https://github.com/greenpress/microfrontends#readme",
+  "devDependencies": {
+    "lerna": "^4.0.0"
+  }
+}
