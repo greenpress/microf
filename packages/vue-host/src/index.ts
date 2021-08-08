@@ -1,24 +1,13 @@
-import { Router } from 'vue-router';
+import { IMicroFrontendHostConfig } from './types';
+import { getAppsRoutes } from './apps-routes';
 
-export interface IRouteData {
-  name: string;
-  path: string;
-}
+export function createMicroFrontendHost({ router, apps }: IMicroFrontendHostConfig): any {
+  let routes;
 
-export interface IMicroAppConfig {
-  url: string;
-  routesJsonUrl: string;
-  routes: IRouteData[] | (() => Promise<IRouteData[]> | IRouteData[])
-}
+  getAppsRoutes(apps).then(appRoutes => routes = appRoutes);
 
-export interface IMicroFrontendHostConfig {
-  router: Router;
-  apps: IMicroAppConfig[]
-}
-
-export function createMicroFrontendHost({router}: IMicroFrontendHostConfig): any {
   return {
-    install() {
+    install(app) {
       console.log(router);
     }
   }
