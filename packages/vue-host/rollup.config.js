@@ -1,5 +1,6 @@
 import { defineConfig } from 'rollup'
 import typescript from '@rollup/plugin-typescript';
+import vue from 'rollup-plugin-vue';
 
 export default defineConfig({
   sourceMap: true,
@@ -8,5 +9,6 @@ export default defineConfig({
     dir: 'dist',
     format: 'esm',
   },
-  plugins: [ typescript() ]
+  external: ['vue'],
+  plugins: [ typescript(), vue() ]
 })

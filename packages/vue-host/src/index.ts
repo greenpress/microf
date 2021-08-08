@@ -1,14 +1,20 @@
 import { IMicroFrontendHostConfig } from './types';
-import { getAppsRoutes } from './apps-routes';
+import { getAppsMap } from './apps-mapper';
+import { getBasicAppRoute } from './basic-route-meta';
 
-export function createMicroFrontendHost({ router, apps }: IMicroFrontendHostConfig): any {
-  let routes;
+export async function createMicroFrontendHost({ router, apps }: IMicroFrontendHostConfig) {
+  const state = { apps: getAppsMap(apps) }
 
-  getAppsRoutes(apps).then(appRoutes => routes = appRoutes);
+  await Promise.all(Object.keys(state.apps).map(async key => {
+    const app = state.apps[key];
+    app.routes = await (app.routes as Function)();
+    app.appRoute = getBasicAppRoute(app);
+    router.addRoute(app.appRoute);
+
+  }));
 
   return {
-    install(app) {
-      console.log(router);
+    install() {
     }
   }
 }

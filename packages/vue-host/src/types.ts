@@ -1,4 +1,4 @@
-import { Router } from 'vue-router';
+import { Router, RouteRecordRaw } from 'vue-router';
 
 export interface IRouteData {
   name: string;
@@ -6,9 +6,11 @@ export interface IRouteData {
 }
 
 export interface IMicroAppConfig {
+  name?: string;
   url: string;
   routesJsonUrl?: string;
-  routes?: IRouteData[] | (() => Promise<IRouteData[]> | IRouteData[])
+  routes?: IRouteData[] | (() => Promise<IRouteData[]> | IRouteData[]);
+  appRoute?: RouteRecordRaw
 }
 
 export interface IMicroFrontendHostConfig {
