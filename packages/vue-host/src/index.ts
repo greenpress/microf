@@ -25,7 +25,6 @@ export async function createMicroFrontendHost({ router, apps }: IMicroFrontendHo
           data.to.path = app.appRoute.path + data.to.path;
           delete data.to.name;
         }
-        console.log('changed', data.to);
         router.push(data.to);
       });
     }
