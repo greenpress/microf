@@ -1,5 +1,9 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png" />
+  <router-link to="/inner-page">link to inner page</router-link>
+  <p>
+    current path: {{$route.path}}
+  </p>
   <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
 </template>
 

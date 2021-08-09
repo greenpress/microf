@@ -1,6 +1,6 @@
 {
-  "name": "@microf/vue-host",
-  "version": "0.0.3",
+  "name": "@microf/vue-child",
+  "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
   "module": "dist/index.js",

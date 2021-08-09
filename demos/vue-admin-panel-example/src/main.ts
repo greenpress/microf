@@ -13,7 +13,13 @@ const router = createRouter({
 const microFrontend = await createMicroFrontendHost({
   router,
   apps: [
-    { url: 'http://localhost:3334', appRoute: { path: '/m' }, routes: [{ path: 'micro-app', name: 'micro-app' }] },
+    {
+      url: 'http://localhost:3334', appRoute: { path: '/m' },
+      routes: [
+        { path: '', name: 'micro-app' },
+        { path: 'inner-page', name: 'micro-app-inner' },
+      ]
+    },
     { url: 'http://localhost:3335', appRoute: { path: '/s' }, routes: [{ path: 'settings', name: 'settings' }] },
   ]
 })

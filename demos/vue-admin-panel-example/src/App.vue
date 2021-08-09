@@ -5,6 +5,9 @@
       <router-link :to="{name: 'micro-app'}">Micro app page</router-link>
     </li>
     <li>
+      <router-link :to="{name: 'micro-app-inner'}">Micro app inner page</router-link>
+    </li>
+    <li>
       <router-link :to="{name: 'settings'}">Settings page</router-link>
     </li>
   </ul>

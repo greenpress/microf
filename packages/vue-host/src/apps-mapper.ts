@@ -1,6 +1,5 @@
 import { IMicroAppConfig, IRouteData } from './types';
 
-
 function getRoutesHandler(app: IMicroAppConfig): (() => Promise<IRouteData[]> | IRouteData[]) {
   if (typeof app.routes === 'function') {
     return app.routes;
@@ -18,6 +17,9 @@ export function getAppsMap(apps): { [key: string]: IMicroAppConfig } {
     const key = app.name || app.url;
     const currentApp: IMicroAppConfig = { ...app };
 
+    if (!currentApp.token) {
+      currentApp.token = btoa(key + Math.random())
+    }
     currentApp.routes = getRoutesHandler(app);
 
     map[key] = currentApp;

@@ -7,10 +7,11 @@ export interface IRouteData {
 
 export interface IMicroAppConfig {
   name?: string;
+  token?: string;
   url: string;
   routesJsonUrl?: string;
   routes?: IRouteData[] | (() => Promise<IRouteData[]> | IRouteData[]);
-  appRoute?: RouteRecordRaw
+  appRoute?: Partial<RouteRecordRaw>
 }
 
 export interface IMicroFrontendHostConfig {
