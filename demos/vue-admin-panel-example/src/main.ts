@@ -14,13 +14,15 @@ const microFrontend = await createMicroFrontendHost({
   router,
   apps: [
     {
-      url: 'http://localhost:3334', appRoute: { path: '/m' },
+      url: 'http://localhost:3334',
+      name: 'micro-app',
+      appRoute: { path: '/m' },
       routes: [
         { path: '', name: 'micro-app' },
         { path: 'inner-page', name: 'micro-app-inner' },
       ]
     },
-    { url: 'http://localhost:3335', appRoute: { path: '/s' }, routes: [{ path: 'settings', name: 'settings' }] },
+    { url: 'http://localhost:3335', name:'settings', appRoute: { path: '/s' }, routes: [{ path: 'settings', name: 'settings' }] },
   ]
 })
 
@@ -28,5 +30,4 @@ const app = createApp(App);
 app.use(router);
 app.use(microFrontend)
 
-console.log('render the app')
 app.mount('#app')

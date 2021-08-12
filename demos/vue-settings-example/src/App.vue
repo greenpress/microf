@@ -1,16 +1,18 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
+  <div>Settings page</div>
+  <p>
+    navigate to:<br>
+    <router-link :to="{name: 'micro-app'}">micro app</router-link><br>
+    <router-link :to="{name: 'micro-app-inner'}">micro app inner</router-link><br>
+  </p>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import HelloWorld from './components/HelloWorld.vue'
 
 export default defineComponent({
   name: 'App',
   components: {
-    HelloWorld
   }
 })
 </script>

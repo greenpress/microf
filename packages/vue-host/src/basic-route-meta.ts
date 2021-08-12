@@ -12,12 +12,14 @@ export function getBasicAppRoute(app: IMicroAppConfig): RouteRecordRaw {
         path: route.path,
         component: MicroApp,
         props: (currentRoute) => {
+          const path = currentRoute.fullPath
+              .slice(currentRoute.fullPath.indexOf(currentRoute.path))
+              .replace(app.appRoute.path, '');
           return {
             app: app,
             route: route,
-            url: app.url + currentRoute.fullPath
-                .slice(currentRoute.fullPath.indexOf(currentRoute.path))
-                .replace(app.appRoute.path, '')
+            path: path || '/',
+            url: app.url + path
           }
         }
       }

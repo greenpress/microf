@@ -6,14 +6,15 @@ import { createMicroFrontendChild } from '@microf/vue-child';
 const router = createRouter({
   routes: [
     { path: '/', component: App },
-    { path: '/inner-page', component: App },
+    { path: '/inner-page', component: App, name: 'micro-app-inner' },
   ], history: createWebHistory()
 });
 
+const microFrontend = createMicroFrontendChild({ router })
 
 const app = createApp(App);
 app.use(router);
-app.use(createMicroFrontendChild({ router }))
+app.use(microFrontend);
 
 
 app.mount('#app')

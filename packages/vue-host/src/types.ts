@@ -8,6 +8,7 @@ export interface IRouteData {
 export interface IMicroAppConfig {
   name?: string;
   token?: string;
+  connected?: boolean;
   url: string;
   routesJsonUrl?: string;
   routes?: IRouteData[] | (() => Promise<IRouteData[]> | IRouteData[]);
