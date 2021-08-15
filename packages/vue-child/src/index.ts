@@ -12,6 +12,7 @@ export async function createMicroFrontendChild({ router, knownApps = [] }: IMicr
   let hostUrl = 'http://localhost:3333';
 
   function emitEvent(eventType: EventType, data: any = {}) {
+    console.log('event emitted from child', eventType);
     window.parent.postMessage({
       token,
       type: eventType,

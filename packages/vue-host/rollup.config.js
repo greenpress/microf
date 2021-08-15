@@ -9,6 +9,12 @@ export default defineConfig({
     dir: 'dist',
     format: 'esm',
   },
-  external: ['vue'],
-  plugins: [ typescript(), vue() ]
+  external: [ 'vue' ],
+  plugins: [
+    typescript(),
+    vue({
+      compileTemplate: true, // Explicitly convert template to render function
+      defaultLang: { script: 'ts' },
+    })
+  ]
 })

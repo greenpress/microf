@@ -10,7 +10,7 @@ const router = createRouter({
   ], history: createWebHistory()
 });
 
-const microFrontend = createMicroFrontendChild({ router })
+const microFrontend = await createMicroFrontendChild({ router })
 
 const app = createApp(App);
 app.use(router);

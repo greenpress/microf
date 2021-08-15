@@ -1,8 +1,9 @@
 <template>
-  <iframe @load="loaded"/>
+  <iframe ref="iframe" @load="loaded"/>
 </template>
 
 <script>
+import { ref, watch, onMounted } from 'vue';
 import { getMicroFrontendState } from './state';
 
 export default {
@@ -12,48 +13,46 @@ export default {
     url: String,
     app: Object
   },
-  data() {
-    return {
-      lastApp: null,
+  setup(props) {
+    console.log('app loaded', props);
+    const iframe = ref(undefined);
+    const lastApp = ref('');
+
+    function changeSrc() {
+      iframe.value.setAttribute('src', props.url);
     }
-  },
-  mounted() {
-    this.changeSrc();
-  },
-  watch: {
-    url() {
-      if (this.app.connected && this.lastApp === this.app.token) {
-        this.emit({
+
+    function emit(data = {}) {
+      iframe.value.contentWindow.postMessage({
+        hostUrl: window.location.origin,
+        token: props.app.token,
+        ...data
+      }, props.url);
+    }
+
+    function loaded() {
+      emit({
+        routes: getMicroFrontendState().routesByApps
+      });
+    }
+
+    onMounted(changeSrc);
+
+    watch(() => props.url, () => {
+      console.log('changed url');
+      if (props.app.connected && lastApp.value === props.app.token) {
+        emit({
           type: 'RouteChange',
-          url: this.url,
-          path: this.path
+          url: props.url,
+          path: props.path
         })
       } else {
-        this.changeSrc();
+        changeSrc();
       }
-      this.lastApp = this.app.token;
-    }
-  },
-  methods: {
-    changeSrc() {
-      this.$el.setAttribute('src', this.url);
-    },
-    emit(data = {}) {
-      this.$el.contentWindow.postMessage({
-        hostUrl: window.location.origin,
-        token: this.app.token,
-        ...data
-      }, this.url);
-    },
-    loaded() {
-      this.emit({
-        routes: getMicroFrontendState().routesByApps
-    });
-    }
+      lastApp.value = props.app.token;
+    })
+
+    return { iframe, loaded };
   }
 }
 </script>
-
-<style scoped>
-
-</style>
