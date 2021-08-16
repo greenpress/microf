@@ -3,12 +3,11 @@ import typescript from '@rollup/plugin-typescript';
 import vue from 'rollup-plugin-vue';
 
 export default defineConfig({
-  sourceMap: true,
   input: 'src/index.ts',
   output: {
     dir: 'dist',
     format: 'esm',
   },
-  external: ['vue'],
+  external: [ 'vue' ],
   plugins: [ typescript(), vue() ]
 })

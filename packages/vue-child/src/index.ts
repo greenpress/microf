@@ -9,10 +9,9 @@ const EmptyComponent = {
 
 export async function createMicroFrontendChild({ router, knownApps = [] }: IMicroFrontendChildConfig) {
   let token;
-  let hostUrl = 'http://localhost:3333';
+  let hostUrl;
 
   function emitEvent(eventType: EventType, data: any = {}) {
-    console.log('event emitted from child', eventType);
     window.parent.postMessage({
       token,
       type: eventType,

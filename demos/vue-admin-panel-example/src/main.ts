@@ -4,30 +4,33 @@ import App from './App.vue'
 import Nothing from './components/Nothing.vue';
 import { createMicroFrontendHost } from '@microf/vue-host';
 
-const router = createRouter({
-  routes: [
-    { path: '/', component: Nothing },
-    { path: '/aaaa', component: Nothing },
-  ], history: createWebHistory()
-});
-const microFrontend = await createMicroFrontendHost({
-  router,
-  apps: [
-    {
-      url: 'http://localhost:3334',
-      name: 'micro-app',
-      appRoute: { path: '/m' },
-      routes: [
-        { path: '', name: 'micro-app' },
-        { path: 'inner-page', name: 'micro-app-inner' },
-      ]
-    },
-    { url: 'http://localhost:3335', name:'settings', appRoute: { path: '/s' }, routes: [{ path: 'settings', name: 'settings' }] },
-  ]
-})
+(async function () {
 
-const app = createApp(App);
-app.use(router);
-app.use(microFrontend)
+  const router = createRouter({
+    routes: [
+      { path: '/', component: Nothing },
+      { path: '/aaaa', component: Nothing },
+    ], history: createWebHistory()
+  });
+  const microFrontend = await createMicroFrontendHost({
+    router,
+    apps: [
+      {
+        url: 'http://localhost:3334',
+        name: 'micro-app',
+        appRoute: { path: '/m' },
+        routes: [
+          { path: '', name: 'micro-app' },
+          { path: 'inner-page', name: 'micro-app-inner' },
+        ]
+      },
+      { url: 'http://localhost:3335', name:'settings', appRoute: { path: '/s' }, routes: [{ path: 'settings', name: 'settings' }] },
+    ]
+  })
 
-app.mount('#app')
+  const app = createApp(App);
+  app.use(router);
+  app.use(microFrontend)
+
+  app.mount('#app')
+})()
