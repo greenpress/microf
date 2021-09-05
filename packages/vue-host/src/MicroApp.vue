@@ -14,7 +14,6 @@ export default {
     app: Object
   },
   setup(props) {
-    console.log('app loaded', props);
     const iframe = ref(undefined);
     const lastApp = ref('');
 
@@ -39,7 +38,6 @@ export default {
     onMounted(changeSrc);
 
     watch(() => props.url, () => {
-      console.log('changed url');
       if (props.app.connected && lastApp.value === props.app.token) {
         emit({
           type: 'RouteChange',

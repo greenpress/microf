@@ -5,7 +5,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 (async function () {
   const router = createRouter({
-    routes: [{path: '', component: App}], history: createWebHistory()
+    routes: [{ path: '', component: App }], history: createWebHistory()
   });
   const microFrontend = await createMicroFrontendChild({ router, knownApps: ['micro-app'] })
 

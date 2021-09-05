@@ -3,12 +3,13 @@ import App from './App.vue'
 import { createRouter, createWebHistory } from 'vue-router';
 import { createMicroFrontendChild } from '@microf/vue-child';
 
-(async function () {
+export default (async function () {
   const router = createRouter({
     routes: [
       { path: '/', component: App },
-      { path: '/inner-page', component: App, name: 'micro-app-inner' },
-    ], history: createWebHistory()
+      { path: '/inner-page', component: App },
+    ],
+    history: createWebHistory(),
   });
 
   const microFrontend = await createMicroFrontendChild({ router })
@@ -17,6 +18,7 @@ import { createMicroFrontendChild } from '@microf/vue-child';
   app.use(router);
   app.use(microFrontend);
 
-
   app.mount('#app');
+
+  return app;
 })()
