@@ -1,13 +1,13 @@
 {
   "name": "vue-admin-panel-example",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview"
   },
   "dependencies": {
-    "@microf/vue-host": "^0.0.6",
+    "@microf/vue-host": "^0.1.0",
     "vue": "^3.0.5",
     "vue-router": "^4.0.10"
   },
