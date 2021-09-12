@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "lerna bootstrap",
-    "demo:vue": "pm2  start demos/vue-demo.config.js",
+    "demo:vue": "pm2 start demos/vue-demo.config.js",
+    "build": "lerna run build",
+    "dev": "lerna run dev --scope=@microf/* --parallel",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

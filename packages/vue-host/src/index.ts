@@ -5,7 +5,6 @@ import { RouteRecordRaw } from 'vue-router';
 import { changeRoute } from './child-route-change';
 import { getMicroFrontendState } from './state';
 
-
 export async function createMicroFrontendHost({ router, apps }: IMicroFrontendHostConfig) {
   const state = getMicroFrontendState();
   state.apps = getAppsMap(apps);
