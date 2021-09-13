@@ -1,6 +1,6 @@
 {
   "name": "vue-micro-app-example",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
@@ -8,7 +8,7 @@
     "serve": "vite preview"
   },
   "dependencies": {
-    "@microf/vue-child": "^0.1.0",
+    "@microf/vue-child": "^0.1.1",
     "vue": "^3.0.5",
     "vue-router": "^4.0.11"
   },
