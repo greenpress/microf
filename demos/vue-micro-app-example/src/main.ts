@@ -1,17 +1,9 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import { createRouter, createWebHistory } from 'vue-router';
 import { createMicroFrontendChild } from '@microf/vue-child';
+import { router } from './router';
 
 export default (async function () {
-  const router = createRouter({
-    routes: [
-      { path: '/', component: App },
-      { path: '/inner-page', component: App },
-    ],
-    history: createWebHistory(),
-  });
-
   const microFrontend = await createMicroFrontendChild({ router })
 
   const app = createApp(App);

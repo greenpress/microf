@@ -19,10 +19,6 @@ import { createMicroFrontendHost } from '@microf/vue-host';
         url: 'http://localhost:3334',
         name: 'micro-app',
         appRoute: { path: '/m' },
-        routes: [
-          { path: '', name: 'micro-app' },
-          { path: 'inner-page', name: 'micro-app-inner' },
-        ]
       },
       { url: 'http://localhost:3335', name:'settings', appRoute: { path: '/s' }, routes: [{ path: 'settings', name: 'settings' }] },
     ]
