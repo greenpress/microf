@@ -1,11 +1,14 @@
 {
   "compilerOptions": {
-    "moduleResolution": "Node",
+    "moduleResolution": "node",
     "experimentalDecorators": true,
     "module": "esnext",
     "target": "esnext",
     "declaration": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "esModuleInterop": true
   },
   "include": [
     "src/**/*.*"

@@ -2,11 +2,11 @@
   <iframe ref="iframe" @load="loaded"/>
 </template>
 
-<script>
-import { ref, watch, onMounted } from 'vue';
+<script lang="ts">
+import { ref, watch, onMounted, defineComponent } from 'vue';
 import { getMicroFrontendState } from './state';
 
-export default {
+export default defineComponent({
   name: 'MicroApp',
   props: {
     path: String,
@@ -52,5 +52,5 @@ export default {
 
     return { iframe, loaded };
   }
-}
+})
 </script>
